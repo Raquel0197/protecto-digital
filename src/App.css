@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F9F5EB;
+  color: #002B5B;
+  line-height: 1.6;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* Header */
+.header-clase {
+  background-color: #002B5B;
+  color: #F9F5EB;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-clase h2 {
+  margin: 0 0 10px 0;
+}
+
+.header-subtitulo {
+  margin: 0 0 10px 0;
+  color: #F07B3F;
+  font-weight: 600;
+}
+
+.header-info {
+  font-size: 0.9rem;
+  border-top: 1px solid #EA5455;
+  padding-top: 8px;
+  margin-top: 10px;
+}
+
+/* Objetivos Card */
+.objetivos-card {
+  border: 1px solid #FFB300;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.objetivo-item {
+  margin-bottom: 15px;
+}
+
+.objetivo-item.con-borde {
+  border-top: 1px dashed #FFB300;
+  padding-top: 15px;
+}
+
+.objetivos-card h4 {
+  color: #002B49;
+  margin: 0 0 5px 0;
+}
+
+.objetivos-card p {
+  color: #2B3A4A;
+  margin: 0;
+}
+
+/* Secuencia Didáctica Título */
+.titulo-secuencia {
+  text-align: center;
+  color: #002B49;
+  margin: 30px 0 20px 0;
+}
+
+/* Actividad Item Component */
+.actividad-card {
+  border: 1px solid #FFB300;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease;
+}
+
+.actividad-card.completada {
+  background-color: #fffbf7;
+}
+
+.actividad-badge-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.actividad-badge {
+  background-color: #F07B3F;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.actividad-card h3 {
+  color: #002B49;
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.actividad-duracion {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0 0 15px 0;
+}
+
+.actividad-descripcion {
+  color: #2B3A4A;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.actividad-btn-container {
+  text-align: center;
+}
+
+.btn-accion {
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-pendiente {
+  background-color: #EA5455;
+}
+
+.btn-realizado {
+  background-color: #2e7d32;
+}
