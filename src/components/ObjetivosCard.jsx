@@ -1,17 +1,15 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function ObjetivosCard() {
   return (
-    <div className="objetivos-card">
-      <div className="objetivo-item">
-        <h4>🎯 Competencia</h4>
-        <p>Comprender los procesos físicos del ciclo del agua y su importancia para la conservación del medio ambiente.</p>
-      </div>
-
-      <div className="objetivo-item con-borde">
-        <h4>📈 Indicador de Logro</h4>
-        <p>Identifica y explica las etapas del ciclo del agua (evaporación, condensación y precipitación) mediante una interfaz interactiva.</p>
-      </div>
-    </div>
+    <motion.div 
+      initial={{ opacity: 0, scale: 0.95 }} 
+      animate={{ opacity: 1, scale: 1 }} 
+      transition={{ duration: 0.4, delay: 0.2 }}
+      style={{ border: '2px solid #F07B3F', padding: '1rem', margin: '1rem 0', borderRadius: '8px' }}
+    >
+      <h3>Competencia</h3>
+      <p>Comprender los procesos físicos del ciclo del agua y su importancia para la conservación del medio ambiente.</p>
+    </motion.div>
   );
 }

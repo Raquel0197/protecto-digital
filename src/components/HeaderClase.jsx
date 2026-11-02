@@ -1,13 +1,15 @@
-import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function HeaderClase() {
   return (
-    <div className="header-clase">
-      <h2>Plan de Clase Digital</h2>
-      <p className="header-subtitulo">El Ciclo del Agua y su Impacto en el Medio Ambiente</p>
-      <div className="header-info">
-        <strong>Docente:</strong> Raquel Aju &nbsp;|&nbsp; <strong>Nivel:</strong> nivel basico
-      </div>
-    </div>
+    <motion.header 
+      initial={{ opacity: 0, y: -20 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 0.5 }}
+      style={{ backgroundColor: '#002B5B', color: '#F9F5EB', padding: '1rem', textAlign: 'center' }}
+    >
+      <h1>Plan de Clase Digital</h1>
+      <p>Docente: Raquel Aju | Nivel: básico</p>
+    </motion.header>
   );
 }

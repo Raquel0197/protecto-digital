@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-export default function ActividadItem({ numero, tipo, titulo, duracion, descripcion }) {
-  const [completado, setCompletado] = useState(false);
-
+export default function ActividadItem({ titulo, descripcion }) {
   return (
-    <div className={`actividad-card ${completado ? 'completada' : ''}`}>
-      <div className="actividad-badge-container">
-        <span className="actividad-badge">{tipo}</span>
-      </div>
-      
-      <h3>{numero}. {titulo}</h3>
-      
-      <p className="actividad-duracion">⏱️ Duración: {duracion} minutos</p>
-
-      {descripcion && (
-        <p className="actividad-descripcion">{descripcion}</p>
-      )}
-
-      <div className="actividad-btn-container">
-        <button 
-          onClick={() => setCompletado(!completado)}
-          className={`btn-accion ${completado ? 'btn-realizado' : 'btn-pendiente'}`}
-        >
-          {completado ? '✓ Actividad Realizada' : 'Marcar como realizada'}
-        </button>
-      </div>
-    </div>
+    <motion.div 
+      whileHover={{ scale: 1.02 }}
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+      style={{ background: '#F9F5EB', border: '1px solid #EA5455', padding: '1rem', margin: '0.5rem 0', borderRadius: '6px' }}
+    >
+      <h4>{titulo}</h4>
+      <p>{descripcion}</p>
+    </motion.div>
   );
 }
