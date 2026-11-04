@@ -18,8 +18,8 @@ export default function ListaActividades() {
         });
 
         const resultado = await respuesta.json();
-        console.log("Datos recibidos de NocoDB:", resultado); // Para revisar en F12 si llegan
-        setActividades(resultado.list || []);
+        console.log("Datos recibidos de NocoDB:", resultado); 
+        setActividades(resultado.list || resultado.data || (Array.isArray(resultado) ? resultado : []));
         setCargando(false);
       } catch (error) {
         console.error("Error al conectar con NocoDB:", error);
@@ -44,7 +44,7 @@ export default function ListaActividades() {
         <p style={{ textAlign: 'center', color: '#666' }}>No se encontraron registros en la base de datos.</p>
       ) : (
         actividades.map((item, index) => {
-          // Extraemos los datos validando si vienen en item.fields o directamente en item
+          // datos validos
           const datos = item.fields || item; 
 
           return (
