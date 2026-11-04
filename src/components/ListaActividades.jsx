@@ -8,16 +8,17 @@ export default function ListaActividades() {
   useEffect(() => {
     const obtenerActividades = async () => {
       try {
-        // API REST de NocoDB
         const urlAPI = "https://app.nocodb.com/api/v1/db/data/v1/p2qw9rjs5fbcbwe/Actividades";
+        
         const respuesta = await fetch(urlAPI, {
           method: 'GET',
           headers: {
-            'xc-token': 'nc_pat_0E5pgX2jklL1XhG4SD4xcLNe1BBOT1pC4C24l3ja ' 
+            'xc-token': 'nc_pat_0E5pgX2jkL1lXhG4SD4xCLe1BBOT1pC4C2413ja'
           }
         });
 
         const resultado = await respuesta.json();
+        console.log("Datos recibidos de NocoDB:", resultado); // Para revisar en F12 si llegan
         setActividades(resultado.list || []);
         setCargando(false);
       } catch (error) {
@@ -39,36 +40,41 @@ export default function ListaActividades() {
         Secuencia Didáctica (Conectado a NocoDB Cloud)
       </h3>
       
-      {actividades.map((item, index) => {
-        const datos = item.fields || item; 
+      {actividades.length === 0 ? (
+        <p style={{ textAlign: 'center', color: '#666' }}>No se encontraron registros en la base de datos.</p>
+      ) : (
+        actividades.map((item, index) => {
+          // Extraemos los datos validando si vienen en item.fields o directamente en item
+          const datos = item.fields || item; 
 
-        return (
-          <motion.div 
-            key={item.Id || index}
-            whileHover={{ scale: 1.01 }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ border: '2px solid #F07B3F', padding: '1rem', margin: '1rem 0', borderRadius: '8px', background: '#fff' }}
-          >
-            <div style={{ textAlign: 'center', marginBottom: '6px' }}>
-              <span style={{ background: '#F07B3F', color: '#fff', padding: '2px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 'bold' }}>
-                {datos.categoria || "Inicio / Teórica"}
-              </span>
-              <h4 style={{ color: '#002B5B', fontSize: '0.95rem', marginTop: '6px' }}>
-                {datos.Title}
-              </h4>
-              <p style={{ fontSize: '0.8rem', color: '#666', marginTop: '2px' }}>
-                ⏱️ Duración: {datos.duracion} minutos
+          return (
+            <motion.div 
+              key={item.Id || index}
+              whileHover={{ scale: 1.01 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ border: '2px solid #F07B3F', padding: '1rem', margin: '1rem 0', borderRadius: '8px', background: '#fff' }}
+            >
+              <div style={{ textAlign: 'center', marginBottom: '6px' }}>
+                <span style={{ background: '#F07B3F', color: '#fff', padding: '2px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 'bold' }}>
+                  {datos.categoria || datos.Category || "Actividad"}
+                </span>
+                <h4 style={{ color: '#002B5B', fontSize: '0.95rem', marginTop: '6px' }}>
+                  {datos.Title || datos.title || "Sin título"}
+                </h4>
+                <p style={{ fontSize: '0.8rem', color: '#666', marginTop: '2px' }}>
+                  ⏱️ Duración: {datos.duracion || datos.Duration || "15"} minutos
+                </p>
+              </div>
+              
+              <p style={{ fontSize: '0.85rem', color: '#444', textAlign: 'center', margin: '10px 0' }}>
+                {datos.descripcion || datos.Description || "Sin descripción"}
               </p>
-            </div>
-            
-            <p style={{ fontSize: '0.85rem', color: '#444', textAlign: 'center', margin: '10px 0' }}>
-              {datos.descripcion}
-            </p>
-          </motion.div>
-        );
-      })}
+            </motion.div>
+          );
+        })
+      )}
     </div>
   );
 }
